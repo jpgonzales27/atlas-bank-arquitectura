@@ -16,13 +16,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class TransferService {
+public class TransferService implements ITransferService{
     private final AccountRepository accountRepository;
     private final TransactionRepository transactionRepository;
     private final List<FeeCalculator> feeCalculators;
 
+    @Override
     @Transactional
-    public Transaction transfer(Long fromId, Long toId, BigDecimal amount) {
+    public Transaction execute(Long fromId, Long toId, BigDecimal amount) {
         // Buscar cuentas
         Account from = accountRepository.findById(fromId)
                 .orElseThrow(() -> new RuntimeException("Cuenta origen no encontrada"));

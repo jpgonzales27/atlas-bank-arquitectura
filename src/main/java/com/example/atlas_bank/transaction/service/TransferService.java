@@ -1,10 +1,10 @@
-package com.example.atlas_bank.service;
+package com.example.atlas_bank.transaction.service;
 
-import com.example.atlas_bank.model.Account;
-import com.example.atlas_bank.model.Transaction;
-import com.example.atlas_bank.repository.AccountRepository;
-import com.example.atlas_bank.repository.TransactionRepository;
-import com.example.atlas_bank.service.fee.FeeCalculator;
+import com.example.atlas_bank.account.model.Account;
+import com.example.atlas_bank.transaction.model.Transaction;
+import com.example.atlas_bank.account.repository.AccountRepository;
+import com.example.atlas_bank.transaction.repository.TransactionRepository;
+import com.example.atlas_bank.transaction.service.fee.FeeCalculator;
 import jakarta.transaction.Transactional;
 
 import java.math.BigDecimal;

@@ -1,4 +1,4 @@
-package com.example.atlas_bank.model;
+package com.example.atlas_bank.transaction.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

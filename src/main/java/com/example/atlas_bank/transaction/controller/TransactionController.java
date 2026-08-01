@@ -1,10 +1,9 @@
-package com.example.atlas_bank.controller;
+package com.example.atlas_bank.transaction.controller;
 
-import com.example.atlas_bank.model.Account;
-import com.example.atlas_bank.model.Transaction;
-import com.example.atlas_bank.service.*;
+import com.example.atlas_bank.transaction.model.Transaction;
+import com.example.atlas_bank.transaction.service.ITransactionQueryService;
+import com.example.atlas_bank.transaction.service.ITransferService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,28 +11,12 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/accounts")
+@RequestMapping("/api/v1/transactions")
 @RequiredArgsConstructor
-public class AccountController {
+public class TransactionController {
 
-    private final IAccountService accountService;
     private final ITransferService transferService;
     private final ITransactionQueryService transactionQueryService;
-
-    @PostMapping
-    public ResponseEntity<Account> create(@RequestBody Account account){
-        return ResponseEntity.status(HttpStatus.CREATED).body(accountService.create(account));
-    }
-
-    @GetMapping
-    public ResponseEntity<List<Account>> findAll(){
-        return ResponseEntity.ok(accountService.findAll());
-    }
-
-    @GetMapping("/{id}")
-    public ResponseEntity<Account> findById(@PathVariable Long id){
-        return ResponseEntity.ok(accountService.findById(id));
-    }
 
     @PostMapping("/transfer")
     public ResponseEntity<Transaction> transfer(@RequestParam Long fromId,
@@ -46,4 +29,5 @@ public class AccountController {
     public ResponseEntity<List<Transaction>> getTransactions(@PathVariable Long id){
         return ResponseEntity.ok(transactionQueryService.getByAccountId(id));
     }
+
 }

@@ -1,6 +1,6 @@
-package com.example.atlas_bank.repository;
+package com.example.atlas_bank.account.repository;
 
-import com.example.atlas_bank.model.Account;
+import com.example.atlas_bank.account.model.Account;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface AccountRepository extends JpaRepository<Account, Long> {

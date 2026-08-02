@@ -1,5 +1,6 @@
 package com.example.atlas_bank.account.service;
 
+import com.example.atlas_bank.account.exception.AccountNotFoundException;
 import com.example.atlas_bank.account.model.Account;
 import com.example.atlas_bank.account.repository.AccountRepository;
 import com.example.atlas_bank.transaction.repository.TransactionRepository;
@@ -27,7 +28,7 @@ public class AccountService implements IAccountService {
     @Override
     public Account findById(Long id){
         return accountRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("Cuenta no encontrada")
+                () -> new AccountNotFoundException(id)
         );
     }
 }

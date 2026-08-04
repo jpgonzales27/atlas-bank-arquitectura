@@ -5,13 +5,12 @@ import com.example.atlas_bank.transaction.dto.TransactionResponse;
 import com.example.atlas_bank.transaction.dto.TransferRequest;
 import com.example.atlas_bank.transaction.model.Transaction;
 import com.example.atlas_bank.transaction.service.ITransactionQueryService;
-import com.example.atlas_bank.transaction.service.ITransferService;
+import com.example.atlas_bank.transaction.service.transfer.ITransferService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @RestController

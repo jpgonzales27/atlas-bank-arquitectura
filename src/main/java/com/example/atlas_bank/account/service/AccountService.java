@@ -4,6 +4,7 @@ import com.example.atlas_bank.account.exception.AccountNotFoundException;
 import com.example.atlas_bank.account.model.Account;
 import com.example.atlas_bank.account.repository.AccountRepository;
 import com.example.atlas_bank.transaction.repository.TransactionRepository;
+import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -13,19 +14,21 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountService implements IAccountService {
     private final AccountRepository accountRepository;
-    private final TransactionRepository transactionRepository;
 
     @Override
+    @Transactional
     public Account create(Account account){
         return accountRepository.save(account);
     }
 
     @Override
+    @Transactional(readOnly = true)
     public List<Account> findAll(){
         return accountRepository.findAll();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Account findById(Long id){
         return accountRepository.findById(id).orElseThrow(
                 () -> new AccountNotFoundException(id)
